@@ -22,13 +22,14 @@ There are several ways to open a notebook in nteract:
 ```
   File
     ⮑  Open
-          ⮑  Open
 ```
+
+*Keyboard shortcut ⌘O on macOS and Ctrl-O on Windows/Linux*
+
 2. Double-click a notebook file :tada::  ***Note: currently this works only in macOS***
 
 3. From the Command Line (assuming you have shell commands installed), run `nteract notebook.ipynb`:
 
-*Keyboard shortcut ⌘O on macOS and Ctrl-O on Windows/Linux*
 
 ### Saving a Notebook
 
