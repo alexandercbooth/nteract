@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Entry accepts props and renders entries in directory 1`] = `
+<tr
+  className="directory-entry"
+>
+  <Component
+    className="directory-entry-field"
+    fileType="directory"
+    key=".0"
+  />
+  <Component
+    className="directory-entry-field"
+    key=".1"
+    link="linky jr"
+  />
+  <Component
+    className="directory-entry-field"
+    key=".2"
+    last_modified="Fri Jun 22 2018 00:15:55 GMT-0400 (Eastern Daylight Time)"
+  />
+</tr>
+`;
+
+exports[`Listing accepts props and renders entries in directory in a table 1`] = `undefined`;

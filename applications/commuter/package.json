@@ -34,6 +34,7 @@
     "access": "public"
   },
   "dependencies": {
+    "@nteract/directory-listing": "^0.1.0",
     "@nteract/markdown": "^2.0.1",
     "@nteract/notebook-preview": "^7.3.0",
     "@nteract/octicons": "^0.3.0",

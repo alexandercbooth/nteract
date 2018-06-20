@@ -1,14 +1,13 @@
 // @flow
 import * as React from "react";
 
-import TimeAgo from "@nteract/timeago";
-import { Book, FileText, FileDirectory } from "@nteract/octicons";
-
 import Link from "next/link";
 
 import { theme } from "../../theme";
 
 import { groupBy } from "lodash";
+import { Entry } from "@nteract/directory-listing";
+import Listing from "@nteract/directory-listing";
 
 export type DirectoryListingProps = {
   contents: Array<JupyterApi$Content>,
@@ -77,135 +76,32 @@ const DirectoryListing = (props: DirectoryListingProps) => {
   const base = props.basepath || "/";
 
   // filter out dotfiles
-  const contents = props.contents.filter(row => !row.name.startsWith("."));
+  const contents = props.contents.filter(entry => !entry.name.startsWith("."));
 
   return (
     <React.Fragment>
-      <div className="directory-listing">
-        <table>
-          <tbody>
-            {contents.map((row, index) => {
-              if (
-                !row.type ||
-                (row.type !== "notebook" &&
-                  row.type !== "directory" &&
-                  row.type !== "file")
-              ) {
-                return null;
-              }
-
-              const icon =
-                row.type === "notebook" ? (
-                  <Book />
-                ) : row.type === "directory" ? (
-                  <FileDirectory />
-                ) : (
-                  <FileText />
-                );
-
-              return (
-                <tr key={index}>
-                  <td className="icon">{icon}</td>
-                  <td className="name">
-                    <Link
-                      href={{
-                        pathname: "/view",
-                        query: { viewPath: row.path }
-                      }}
-                      as={base + "/" + row.path}
-                    >
-                      <a>{row.name}</a>
-                    </Link>
-                  </td>
-                  <td className="timeago">
-                    <TimeAgo date={row.last_modified} />
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
-      <style jsx>
-        {`
-          .icon {
-            padding-right: 2px;
-            padding-left: 10px;
-            width: 17px;
-            vertical-align: middle;
-            text-align: center;
-            color: ${theme.link};
-            opacity: 0.95;
-          }
-
-          .name {
-            color: ${theme.link};
-            vertical-align: middle;
-          }
-
-          tr {
-            border-top: 1px solid #eaecef;
-          }
-
-          td {
-            padding: 6px 3px;
-            text-align: left;
-            line-height: 20px;
-            vertical-align: top;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            max-width: 100%;
-          }
-
-          td a {
-            text-decoration: none;
-            color: ${theme.link};
-          }
-
-          td a:hover {
-            text-decoration: underline;
-            outline-width: 0;
-            color: ${theme.link};
-          }
-
-          tr:hover {
-            background-color: #f6f8fa;
-            transition: background-color 0.1s ease-out;
-          }
-
-          tr:first-child {
-            border-top: none;
-          }
-
-          tr:last-child {
-            border-bottom: none;
-          }
-
-          table {
-            width: 100%;
-            border-collapse: collapse;
-            border-radius: 2px;
-            border-spacing: 0;
-          }
-
-          .directory-listing {
-            margin-bottom: 10px;
-            border-top: 0;
-            border-radius: 3px;
-          }
-
-          .timeago {
-            text-align: right;
-            color: #6a737d;
-            padding-right: 10px;
-          }
-
-          td a:hover {
-            outline-width: 0;
-            text-decoration: underline;
-          }
-        `}
-      </style>
+      <Listing>
+        {contents.map((entry, index) => {
+          const link = (
+            <Link
+              href={{
+                pathname: "/view",
+                query: { viewPath: entry.path }
+              }}
+              as={base + "/" + entry.path}
+            >
+              <a>{entry.name}</a>
+            </Link>
+          );
+          return (
+            <Entry key={index}>
+              <Entry.Icon fileType={entry.type} />
+              <Entry.Name link={link} />
+              <Entry.LastSaved last_modified={entry.last_modified} />
+            </Entry>
+          );
+        })}
+      </Listing>
     </React.Fragment>
   );
 };

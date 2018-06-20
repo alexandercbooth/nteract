@@ -29,6 +29,11 @@ const lernaModules = [
     private: false
   },
   {
+    name: "@nteract/directory-listing",
+    version: "0.1.0",
+    private: false
+  },
+  {
     name: "@nteract/display-area",
     version: "4.1.1",
     private: false

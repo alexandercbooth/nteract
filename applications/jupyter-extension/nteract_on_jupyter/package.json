@@ -21,6 +21,7 @@
     "@nteract/connected-components": "^1.2.0",
     "@nteract/core": "^6.1.0",
     "@nteract/editor": "^7.1.0",
+    "@nteract/directory-listing": "^0.1.0",
     "@nteract/iron-icons": "^0.1.1",
     "@nteract/logos": "^0.0.3",
     "@nteract/monaco-editor": "^1.1.0",
