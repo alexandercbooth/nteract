@@ -54,6 +54,19 @@ export default class Entry extends React.Component<EntryProps, *> {
           vertical-align: middle;
           font-size: 0.9em;
         }
+
+        :global(a) {
+          text-decoration: none;
+        }
+
+        :global(a:hover) {
+          text-decoration: underline;
+          outline-width: 0;
+        }
+        :global(a:hover) {
+          outline-width: 0;
+          text-decoration: underline;
+        }
       `}</style>
     </td>
   );
@@ -89,6 +102,24 @@ export default class Entry extends React.Component<EntryProps, *> {
             return <td className="directory-entry-field">{child}</td>;
           }
         })}
+        <style jsx>{`
+          tr {
+            border-top: 1px solid #eaecef;
+          }
+
+          tr:hover {
+            background-color: #f6f8fa;
+            transition: background-color 0.1s ease-out;
+          }
+
+          tr:first-child {
+            border-top: none;
+          }
+
+          tr:last-child {
+            border-bottom: none;
+          }
+        `}</style>
       </tr>
     );
   }
