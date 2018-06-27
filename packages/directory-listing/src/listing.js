@@ -7,7 +7,7 @@ export default class Listing extends React.Component<ListingProps> {
   render() {
     return (
       <React.Fragment>
-        <div>
+        <div className="listing-root">
           <table>
             <tbody>{this.props.children}</tbody>
           </table>
@@ -18,6 +18,9 @@ export default class Listing extends React.Component<ListingProps> {
             border-collapse: collapse;
             border-radius: 2px;
             border-spacing: 0;
+          }
+          .listing-root {
+            padding: 0px 0px 20px 0px;
           }
         `}</style>
       </React.Fragment>

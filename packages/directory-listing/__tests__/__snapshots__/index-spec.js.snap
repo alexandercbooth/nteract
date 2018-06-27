@@ -2,7 +2,7 @@
 
 exports[`Entry accepts props and renders entries in directory 1`] = `
 <tr
-  className="directory-entry"
+  className="jsx-3511019751 directory-entry"
 >
   <Component
     className="directory-entry-field"
@@ -18,6 +18,10 @@ exports[`Entry accepts props and renders entries in directory 1`] = `
     className="directory-entry-field"
     key=".2"
     last_modified="Fri Jun 22 2018 00:15:55 GMT-0400 (Eastern Daylight Time)"
+  />
+  <JSXStyle
+    css="tr.jsx-3511019751{border-top:1px solid #eaecef;}tr.jsx-3511019751:hover{background-color:#f6f8fa;-webkit-transition:background-color 0.1s ease-out;transition:background-color 0.1s ease-out;}tr.jsx-3511019751:first-child{border-top:none;}tr.jsx-3511019751:last-child{border-bottom:none;}"
+    styleId="3511019751"
   />
 </tr>
 `;

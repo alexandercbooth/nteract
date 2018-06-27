@@ -33,13 +33,14 @@ export default class Entry extends React.Component<EntryProps, *> {
       <td className="icon">
         {icon}
         <style jsx>{`
-          .icon {
+          :global(.icon) {
             padding-right: 2px;
             padding-left: 10px;
             width: 17px;
             vertical-align: middle;
             text-align: center;
             opacity: 0.95;
+            color: #0366d6;
           }
         `}</style>
       </td>
@@ -53,6 +54,7 @@ export default class Entry extends React.Component<EntryProps, *> {
         .name {
           vertical-align: middle;
           font-size: 0.9em;
+          padding: 8px;
         }
 
         :global(a) {
@@ -62,10 +64,6 @@ export default class Entry extends React.Component<EntryProps, *> {
         :global(a:hover) {
           text-decoration: underline;
           outline-width: 0;
-        }
-        :global(a:hover) {
-          outline-width: 0;
-          text-decoration: underline;
         }
       `}</style>
     </td>

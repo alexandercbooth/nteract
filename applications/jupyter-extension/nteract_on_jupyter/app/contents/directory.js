@@ -73,34 +73,43 @@ export class DirectoryApp extends React.PureComponent<DirectoryProps, null> {
           </NavSection>
         </Nav>
         <NewNotebookNavigation onClick={this.openNotebook} />
-        <Listing>
-          {atRoot ? null : (
-            // TODO: Create a contentRef for `..`, even though it's a placeholder
-            // When we're not at the root of the tree, show `..`
-            <Entry>
-              <Entry.Icon fileType={"directory"} />
-              <Entry.Name link={dotdotlink} />
-            </Entry>
-          )}
-          {this.props.contents.map((entry, index) => {
-            const link = (
-              <a
-                href={urljoin(basePath, "/nteract/edit/", entry.path)}
-                // When it's a notebook, we open a new tab
-                target={entry.type === "notebook" ? "_blank" : undefined}
-              >
-                {entry.name}
-              </a>
-            );
-            return (
-              <Entry key={index}>
-                <Entry.Icon fileType={entry.type} />
-                <Entry.Name link={link} />
-                <Entry.LastSaved last_modified={entry.last_modified} />
+        <div className="jext-listing-root">
+          <Listing>
+            {atRoot ? null : (
+              // TODO: Create a contentRef for `..`, even though it's a placeholder
+              // When we're not at the root of the tree, show `..`
+              <Entry>
+                <Entry.Icon fileType={"directory"} />
+                <Entry.Name link={dotdotlink} />
               </Entry>
-            );
-          })}
-        </Listing>
+            )}
+            {this.props.contents.map((entry, index) => {
+              const link = (
+                <a
+                  href={urljoin(basePath, "/nteract/edit/", entry.path)}
+                  // When it's a notebook, we open a new tab
+                  target={entry.type === "notebook" ? "_blank" : undefined}
+                >
+                  {entry.name}
+                </a>
+              );
+              return (
+                <Entry key={index}>
+                  <Entry.Icon fileType={entry.type} />
+                  <Entry.Name link={link} />
+                  <Entry.LastSaved last_modified={entry.last_modified} />
+                </Entry>
+              );
+            })}
+          </Listing>
+        </div>
+        <style jsx>{`
+          .jext-listing-root {
+            margin-top: 2rem;
+            padding-left: 2rem;
+            padding-right: 2rem;
+          }
+        `}</style>
       </React.Fragment>
     );
   }
