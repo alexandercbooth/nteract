@@ -12,8 +12,9 @@ exports[`Entry accepts props and renders entries in directory 1`] = `
   <Component
     className="directory-entry-field"
     key=".1"
-    link="linky jr"
-  />
+  >
+    linky jr
+  </Component>
   <Component
     className="directory-entry-field"
     key=".2"

@@ -1,4 +1,4 @@
 // @flow
-import { Entry } from "./entry";
-import { Listing } from "./listing";
+import { Entry } from "./components/entry";
+import { Listing } from "./components/listing";
 export { Entry, Listing };
