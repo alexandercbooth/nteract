@@ -8,7 +8,7 @@ import { Book, FileText, FileDirectory } from "@nteract/octicons";
 
 type EntryProps = { children?: React.Node };
 
-export default class Entry extends React.Component<EntryProps, *> {
+export class Entry extends React.Component<EntryProps, *> {
   static Icon = ({
     fileType
   }: {
@@ -47,9 +47,9 @@ export default class Entry extends React.Component<EntryProps, *> {
     );
   };
 
-  static Name = ({ link }: { link: any }) => (
+  static Name = ({ children }: { children: React.Node }) => (
     <td className="name">
-      {link}
+      {children}
       <style jsx>{`
         .name {
           vertical-align: middle;

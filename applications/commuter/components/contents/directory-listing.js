@@ -6,8 +6,7 @@ import Link from "next/link";
 import { theme } from "../../theme";
 
 import { groupBy } from "lodash";
-import { Entry } from "@nteract/directory-listing";
-import Listing from "@nteract/directory-listing";
+import { Entry, Listing } from "@nteract/directory-listing";
 
 export type DirectoryListingProps = {
   contents: Array<JupyterApi$Content>,
@@ -96,7 +95,7 @@ const DirectoryListing = (props: DirectoryListingProps) => {
           return (
             <Entry key={index}>
               <Entry.Icon fileType={entry.type} />
-              <Entry.Name link={link} />
+              <Entry.Name>{link}</Entry.Name>
               <Entry.LastSaved last_modified={entry.last_modified} />
             </Entry>
           );

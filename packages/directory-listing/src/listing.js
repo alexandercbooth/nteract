@@ -3,7 +3,7 @@ import * as React from "react";
 
 export type ListingProps = { children: React.Node };
 
-export default class Listing extends React.Component<ListingProps> {
+export class Listing extends React.Component<ListingProps> {
   render() {
     return (
       <React.Fragment>
