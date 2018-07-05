@@ -34,6 +34,7 @@
     "showcase": "lerna run dev --scope @nteract/showcase --stream",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    "styleguidist:watch": "styleguidist server",
     "build": "NODE_ENV=production npm run build:packages",
     "build:apps": "lerna run build --scope nteract --scope @nteract/play --scope @nteract/commuter --scope @nteract/notebook-on-next --scope nteract-on-jupyter --parallel --stream",
     "build:desktop": "lerna run build --scope nteract --stream",

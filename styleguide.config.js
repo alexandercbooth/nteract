@@ -7,6 +7,10 @@ module.exports = {
     {
       name: "Presentational Components",
       components: "packages/presentational-components/src/components/*.js"
+    },
+    {
+      name: "Directory Listing",
+      components: "packages/directory-listing/src/components/*.js"
     }
   ],
   // For overriding the components styleguidist uses
