@@ -2,16 +2,16 @@
 import * as React from "react";
 import { shallow } from "enzyme";
 import toJson from "enzyme-to-json";
-import { Entry, Listing } from "../src";
+import { Entry, Listing, Name, Icon, LastSaved } from "../src";
 
 describe("Listing", () => {
   it("accepts props and renders entries in directory in a table", () => {
     const component = (
       <Listing>
         <Entry>
-          <Entry.Icon fileType={"directory"} />
-          <Entry.Name>{"linky"}</Entry.Name>
-          <Entry.LastSaved
+          <Icon fileType={"directory"} />
+          <Name>{"linky"}</Name>
+          <LastSaved
             last_modified={
               "Fri Jun 22 2018 00:15:55 GMT-0400 (Eastern Daylight Time)"
             }
@@ -27,9 +27,9 @@ describe("Entry", () => {
   it("accepts props and renders entries in directory", () => {
     const component = shallow(
       <Entry>
-        <Entry.Icon fileType={"directory"} />
-        <Entry.Name>{"linky jr"}</Entry.Name>
-        <Entry.LastSaved
+        <Icon fileType={"directory"} />
+        <Name>{"linky jr"}</Name>
+        <LastSaved
           last_modified={
             "Fri Jun 22 2018 00:15:55 GMT-0400 (Eastern Daylight Time)"
           }

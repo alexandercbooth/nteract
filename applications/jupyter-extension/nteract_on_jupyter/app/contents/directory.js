@@ -12,7 +12,13 @@ import { openNotebook } from "../triggers/open-notebook";
 
 import { Nav, NavSection } from "../components/nav";
 import { NewNotebookNavigation } from "@nteract/connected-components";
-import { Entry, Listing } from "@nteract/directory-listing";
+import {
+  Entry,
+  Listing,
+  Icon,
+  Name,
+  LastSaved
+} from "@nteract/directory-listing";
 
 import type {
   AppState,
@@ -78,8 +84,8 @@ export class DirectoryApp extends React.PureComponent<DirectoryProps, null> {
               // TODO: Create a contentRef for `..`, even though it's a placeholder
               // When we're not at the root of the tree, show `..`
               <Entry>
-                <Entry.Icon fileType={"directory"} />
-                <Entry.Name>{dotdotlink}</Entry.Name>
+                <Icon fileType={"directory"} />
+                <Name>{dotdotlink}</Name>
               </Entry>
             )}
             {this.props.contents.map((entry, index) => {
@@ -94,9 +100,9 @@ export class DirectoryApp extends React.PureComponent<DirectoryProps, null> {
               );
               return (
                 <Entry key={index}>
-                  <Entry.Icon fileType={entry.type} />
-                  <Entry.Name>{link}</Entry.Name>
-                  <Entry.LastSaved last_modified={entry.last_modified} />
+                  <Icon fileType={entry.type} />
+                  <Name>{link}</Name>
+                  <LastSaved last_modified={entry.last_modified} />
                 </Entry>
               );
             })}

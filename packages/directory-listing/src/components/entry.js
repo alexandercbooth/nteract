@@ -3,91 +3,21 @@ import * as React from "react";
 
 import { areComponentsEqual } from "react-hot-loader";
 
-import TimeAgo from "@nteract/timeago";
-import { Book, FileText, FileDirectory } from "@nteract/octicons";
+import { Icon } from "./icon";
+import { Name } from "./name";
+import { LastSaved } from "./lastsaved";
 
-type EntryProps = { children?: React.Node };
+type EntryProps = { children: React.Node };
 
-export class Entry extends React.Component<EntryProps, *> {
-  static Icon = ({
-    fileType
-  }: {
-    fileType: "unknown" | "notebook" | "directory" | "file" | "dummy"
-  }) => {
-    let icon = <FileText />;
-    switch (fileType) {
-      case "notebook":
-        icon = <Book />;
-        break;
-      case "directory":
-        icon = <FileDirectory />;
-        break;
-      case "file":
-        icon = <FileText />;
-        break;
-      default:
-        icon = <FileText />;
-    }
-
-    return (
-      <td className="icon">
-        {icon}
-        <style jsx>{`
-          :global(.icon) {
-            padding-right: 2px;
-            padding-left: 10px;
-            width: 17px;
-            vertical-align: middle;
-            text-align: center;
-            opacity: 0.95;
-            color: #0366d6;
-          }
-        `}</style>
-      </td>
-    );
-  };
-
-  static Name = ({ children }: { children: React.Node }) => (
-    <td className="name">
-      {children}
-      <style jsx>{`
-        .name {
-          vertical-align: middle;
-          font-size: 0.9em;
-          padding: 8px;
-        }
-
-        :global(a) {
-          text-decoration: none;
-        }
-
-        :global(a:hover) {
-          text-decoration: underline;
-          outline-width: 0;
-        }
-      `}</style>
-    </td>
-  );
-  static LastSaved = ({ last_modified }: { last_modified: Date }) => (
-    <td className="timeago">
-      <TimeAgo date={last_modified} />
-      <style jsx>{`
-        .timeago {
-          text-align: right;
-          color: #6a737d;
-          padding-right: 10px;
-        }
-      `}</style>
-    </td>
-  );
+export class Entry extends React.Component<EntryProps, null> {
   render() {
     return (
       <tr className="directory-entry">
         {React.Children.map(this.props.children, child => {
           if (
-            areComponentsEqual(child.type, Entry.Icon) ||
-            areComponentsEqual(child.type, Entry.Name) ||
-            areComponentsEqual(child.type, Entry.LastSaved)
+            areComponentsEqual(child.type, Icon) ||
+            areComponentsEqual(child.type, Name) ||
+            areComponentsEqual(child.type, LastSaved)
           ) {
             return React.cloneElement(child, {
               className:

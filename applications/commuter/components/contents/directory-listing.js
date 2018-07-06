@@ -6,7 +6,13 @@ import Link from "next/link";
 import { theme } from "../../theme";
 
 import { groupBy } from "lodash";
-import { Entry, Listing } from "@nteract/directory-listing";
+import {
+  Entry,
+  Listing,
+  Icon,
+  Name,
+  LastSaved
+} from "@nteract/directory-listing";
 
 export type DirectoryListingProps = {
   contents: Array<JupyterApi$Content>,
@@ -94,9 +100,9 @@ const DirectoryListing = (props: DirectoryListingProps) => {
           );
           return (
             <Entry key={index}>
-              <Entry.Icon fileType={entry.type} />
-              <Entry.Name>{link}</Entry.Name>
-              <Entry.LastSaved last_modified={entry.last_modified} />
+              <Icon fileType={entry.type} />
+              <Name>{link}</Name>
+              <LastSaved last_modified={entry.last_modified} />
             </Entry>
           );
         })}

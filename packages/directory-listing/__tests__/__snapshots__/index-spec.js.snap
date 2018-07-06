@@ -4,18 +4,18 @@ exports[`Entry accepts props and renders entries in directory 1`] = `
 <tr
   className="jsx-3511019751 directory-entry"
 >
-  <Component
+  <Icon
     className="directory-entry-field"
     fileType="directory"
     key=".0"
   />
-  <Component
+  <Name
     className="directory-entry-field"
     key=".1"
   >
     linky jr
-  </Component>
-  <Component
+  </Name>
+  <LastSaved
     className="directory-entry-field"
     key=".2"
     last_modified="Fri Jun 22 2018 00:15:55 GMT-0400 (Eastern Daylight Time)"

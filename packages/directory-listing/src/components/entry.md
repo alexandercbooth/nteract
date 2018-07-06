@@ -1,44 +1,21 @@
 ```jsx static
 import { Entry } from "@nteract/directory-listing"
 ```
-This component is used to create individual entries in a directory. It is not meant to be used alone, but rather as children of the Listing component. It has three compound components: Icon, Name and LastSaved.
+This component is used to create individual entries in a directory. It is not meant to be used alone, but rather as children of the Listing component and renders children of it's own. In nteract, we use it as the parent of Icon, Name and LastSaved components.
 
 
 
-Display an Icon
+Display an Icon, Name, and time since last saved of an entry in a directory.
 ```jsx
-const { Entry } = require("../");
-<Entry key={0}>
-    <Entry.Icon fileType={"notebook"} />
-</Entry>
-```
-_Note: Icon accepts fileType as a prop. This type can be either "notebook", "file" or "directory"._
-
-
-Display a filename and link
-```jsx
-const { Entry } = require("../");
+const { Entry, Icon, Name, LastSaved } = require("../");
 const link = (
-                <a
-                  href={"http://nteract.io"}
-                  // When it's a notebook, we open a new tab
-                  target={entry.type === "notebook" ? "_blank" : undefined}
-                >
+                <a href={"http://nteract.io"}>
                   {"Example-Notebook.ipynb"}
                 </a>
               );
 <Entry key={0}>
-    <Entry.Name>{link}</Entry.Name>
+    <Icon fileType={"notebook"} />
+    <Name>{link}</Name>
+    <LastSaved last_modified={new Date()} />
 </Entry>
 ```
-_Note: Name accepts children as a prop._
-
-
-Display the time since save
-```jsx
-const { Entry } = require("../");
-<Entry key={0}>
-    <Entry.LastSaved last_modified={new Date()} />
-</Entry>
-```
-_Note: LastSaved accepts last-modified as a prop. This is expected to be a valid date._
