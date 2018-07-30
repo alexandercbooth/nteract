@@ -1,0 +1,15 @@
+toc:
+  - name: Record Outputs
+    description: |
+      In memory notebook format outputs
+    children:
+      - StreamName
+      - DisplayDataType
+      - demultiline
+      - remultiline
+      - ErrorType
+      - ExecuteResultType
+      - outputFromNbformat
+      - outputFromMessage
+
+  

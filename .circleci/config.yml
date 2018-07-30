@@ -42,6 +42,10 @@ jobs:
           path: styleguide
           destination: styleguide
 
+      - store_artifacts:
+          path: devdocs
+          destination: devdocs
+
       - run:
           name: Build Commuter
           command: npx lerna run build --scope @nteract/commuter
