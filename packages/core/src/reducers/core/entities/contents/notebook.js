@@ -17,7 +17,7 @@ import type {
   ImmutableOutput,
   ImmutableOutputs,
   MimeBundle
-} from "@nteract/commutable";
+} from "@nteract/records";
 
 import { outputFromNbformat } from "@nteract/records";
 import type { NbformatOutput } from "@nteract/records";
@@ -30,19 +30,19 @@ import {
   removeCell,
   emptyNotebook,
   createImmutableOutput,
-  createImmutableMimeBundle,
-  fromJS
-} from "@nteract/commutable";
+  createImmutableMimeBundle
+} from "@nteract/records";
 
 import { has } from "lodash";
 
-import type { Output, StreamOutput } from "@nteract/commutable/src/v4";
+import type { NbformatCell } from "@nteract/records";
+
 import { escapeCarriageReturnSafe } from "escape-carriage";
 
 import type { NotebookModel } from "../../../../state/entities/contents";
 
-type KeyPath = Immutable.List<string | number>;
-type KeyPaths = Immutable.List<KeyPath>;
+type KeyPath = Array<string | number>;
+type KeyPaths = Array<KeyPath>;
 
 /**
  * An output can be a stream of data that does not arrive at a single time. This
@@ -57,7 +57,7 @@ export function reduceOutputs(
   outputs: ImmutableOutputs,
   output: NbformatOutput
 ) {
-  const last = outputs.last();
+  const last = outputs[outputs.length - 1];
 
   if (
     output.output_type !== "stream" ||
@@ -79,15 +79,16 @@ export function reduceOutputs(
 
   if (
     last &&
-    outputs.size > 0 &&
+    outputs.length > 0 &&
     typeof streamOutput.name !== "undefined" &&
     last.get("output_type") === "stream"
   ) {
     // Invariant: size > 0, outputs.last() exists
     if (last.get("name") === streamOutput.name) {
-      return outputs.updateIn([outputs.size - 1, "text"], appendText);
+      outputs[outputs.length - 1]["text"] = appendText;
+      return outputs;
     }
-    const nextToLast: ?ImmutableOutput = outputs.butLast().last();
+    const nextToLast: ?ImmutableOutput = outputs[outputs.length - 2];
     if (
       nextToLast &&
       nextToLast.get("output_type") === "stream" &&
